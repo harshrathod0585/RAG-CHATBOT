@@ -1,0 +1,16 @@
+langchain
+python-dotenv
+ipykernel
+langchain_community
+pypdf
+wikipedia
+langchain-text-splitters
+langchain-openai
+chromadb
+faiss-cpu
+langchain-chroma
+langchain-core
+langchain-groq
+streamlit
+arxiv
+langchain_nvidia_ai_endpoints
