@@ -15,7 +15,7 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
 
-os.environ['NVIDIA_API_KEY']=os.getenv("NVIDIA_API_KEY")
+os.environ['NVIDIA_API_KEY']=st.secrets["NVIDIA_API_KEY"]
 llm = ChatNVIDIA(model='meta/llama-3.3-70b-instruct',temperature=0.7)
 
 st.title("NVIDIA REPRESENTING CHATBOT")
