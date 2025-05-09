@@ -18,7 +18,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git pull https://harshrathod18:$HF_TOKEN@huggingface.co/spaces/harshrathod18/RAG-CHATBOT-NVIDIA main --rebase
+          git pull --rebase --strategy-option=theirs https://harshrathod18:$HF_TOKEN@huggingface.co/spaces/harshrathod18/RAG-CHATBOT-NVIDIA main
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
       - name: Push to hub
