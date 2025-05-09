@@ -6,7 +6,7 @@ load_dotenv()
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings,ChatNVIDIA
-from langchain_chroma import Chroma
+from langchain.vectorstores import FAISS
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain,create_history_aware_retriever
 from langchain.prompts import ChatPromptTemplate,MessagesPlaceholder
@@ -32,7 +32,7 @@ if upload_file:
     document = PyPDFLoader(pdf_path).load()
     final_document = RecursiveCharacterTextSplitter(chunk_size=500,chunk_overlap=20).split_documents(document)
     embedding = NVIDIAEmbeddings()
-    vectorstore = Chroma.from_documents(embedding=embedding,documents=final_document)
+    vectorstore = FAISS.from_documents(embedding=embedding,documents=final_document)
     retrieval = vectorstore.as_retriever()
 
     history_prompt_for_system = (
@@ -97,11 +97,3 @@ if user_prompt:=st.chat_input(placeholder='Ask Anything'):
     st.session_state.messages.append({'role':'ai','content':response['answer']})
     with st.chat_message('ai'):
         st.write(response['answer'])
-
-
-    
-
-    
-        
-
-        
